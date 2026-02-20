@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lakshya | Profile</title>
+<title>Lakshya | Kirmada ⚡</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -16,90 +17,116 @@
 }
 
 body{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
     background:#000;
-    overflow:hidden;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* Lightning Background */
+/* Animated Lightning Gradient */
 body::before{
     content:"";
-    position:absolute;
+    position:fixed;
     width:200%;
     height:200%;
-    background:radial-gradient(circle, #ffd000 1px, transparent 1px);
-    background-size:50px 50px;
-    opacity:0.05;
-    animation:moveBg 10s linear infinite;
+    background:linear-gradient(45deg,#000,#111,#000,#222);
+    animation:moveBg 15s linear infinite;
+    z-index:-2;
 }
 
 @keyframes moveBg{
     0%{transform:translate(0,0);}
-    100%{transform:translate(-50px,-50px);}
+    100%{transform:translate(-300px,-300px);}
 }
 
-.card{
-    position:relative;
-    width:380px;
-    padding:30px;
-    border-radius:20px;
-    background:rgba(0,0,0,0.8);
-    border:2px solid #ffd000;
-    box-shadow:0 0 30px #ffd000;
-    text-align:center;
-    color:white;
+/* Cursor Glow */
+.cursor{
+    position:fixed;
+    width:25px;
+    height:25px;
+    border-radius:50%;
+    background:#ffd000;
+    pointer-events:none;
+    mix-blend-mode:difference;
+    box-shadow:0 0 20px #ffd000,
+               0 0 40px #ffd000,
+               0 0 60px #ffd000;
+    transform:translate(-50%,-50%);
+    transition:transform 0.05s linear;
+    z-index:999;
+}
+
+/* Container */
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:50px 0;
+}
+
+/* Glass Card */
+.glass{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(20px);
+    border:1px solid rgba(255,208,0,0.3);
+    border-radius:25px;
+    padding:40px;
+    margin-bottom:40px;
+    box-shadow:0 0 30px rgba(255,208,0,0.2);
     transition:0.4s;
 }
 
-.card:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 50px #ffd000;
+.glass:hover{
+    box-shadow:0 0 60px rgba(255,208,0,0.6);
+    transform:scale(1.02);
+}
+
+/* Hero Section */
+.hero{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
 }
 
 .profile-img{
-    width:120px;
-    height:120px;
-    border-radius:50%;
+    width:220px;
+    border-radius:20px;
     border:3px solid #ffd000;
-    object-fit:cover;
-    margin-bottom:15px;
+    box-shadow:0 0 40px #ffd000;
 }
 
-h1{
-    font-size:26px;
+.hero-text{
+    max-width:600px;
+}
+
+.hero-text h1{
+    font-size:40px;
     color:#ffd000;
 }
 
-.nickname{
-    font-size:14px;
-    opacity:0.8;
+.hero-text h2{
+    font-weight:300;
+    margin:10px 0;
 }
 
 .typing{
-    font-size:14px;
-    margin:15px 0;
-    height:40px;
+    height:30px;
+    margin-top:15px;
+    font-size:16px;
 }
 
-.skills{
-    text-align:left;
-    margin-top:20px;
-}
-
+/* Skills */
 .skill{
-    margin-bottom:15px;
+    margin:20px 0;
 }
 
 .skill-name{
-    font-size:13px;
+    font-size:14px;
 }
 
 .skill-bar{
-    height:6px;
-    background:#222;
+    height:8px;
+    background:#111;
     border-radius:10px;
     overflow:hidden;
 }
@@ -115,117 +142,132 @@ h1{
     from{width:0;}
 }
 
-.socials{
-    margin-top:20px;
-}
-
-.socials a{
+/* Contact */
+.contact a{
+    display:inline-block;
+    margin-right:20px;
     text-decoration:none;
     color:#ffd000;
-    margin:0 10px;
-    font-size:14px;
     transition:0.3s;
 }
 
-.socials a:hover{
+.contact a:hover{
     color:white;
+    text-shadow:0 0 10px #ffd000;
 }
 
-/* Lightning Flash */
-.flash{
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:white;
-    opacity:0;
-    pointer-events:none;
-    animation:flash 6s infinite;
+/* Footer */
+footer{
+    text-align:center;
+    padding:20px;
+    opacity:0.6;
 }
 
-@keyframes flash{
-    0%,95%,100%{opacity:0;}
-    96%{opacity:0.8;}
-    97%{opacity:0;}
-}
 </style>
 </head>
 <body>
 
-<div class="flash"></div>
+<div class="cursor"></div>
 
-<div class="card">
-    <img src="https://via.placeholder.com/150" class="profile-img">
+<div class="container">
 
-    <h1>Lakshya</h1>
-    <div class="nickname">aka Kirmada ⚡</div>
+    <div class="glass hero">
+        <img src="profile.png" class="profile-img">
 
-    <div class="typing" id="typing"></div>
+        <div class="hero-text">
+            <h1>Lakshya ⚡</h1>
+            <h2>aka Kirmada</h2>
+            <div class="typing" id="typing"></div>
+        </div>
+    </div>
 
-    <div class="skills">
+    <div class="glass">
+        <h2>About Me</h2>
+        <p style="margin-top:15px;line-height:1.6;">
+            Just good in everything but not the best — and that’s the power.
+            2D Animation, Video Editing, Graphic Designing,
+            and integrating AI & ML into coding and design workflows.
+            Constantly evolving. Constantly experimenting.
+        </p>
+    </div>
+
+    <div class="glass">
+        <h2>Skills</h2>
+
         <div class="skill">
             <div class="skill-name">2D Animation</div>
-            <div class="skill-bar">
-                <div class="skill-level" style="width:85%"></div>
-            </div>
+            <div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
         </div>
 
         <div class="skill">
             <div class="skill-name">Video Editing</div>
-            <div class="skill-bar">
-                <div class="skill-level" style="width:90%"></div>
-            </div>
+            <div class="skill-bar"><div class="skill-level" style="width:90%"></div></div>
         </div>
 
         <div class="skill">
             <div class="skill-name">Graphic Designing</div>
-            <div class="skill-bar">
-                <div class="skill-level" style="width:88%"></div>
-            </div>
+            <div class="skill-bar"><div class="skill-level" style="width:88%"></div></div>
         </div>
 
         <div class="skill">
-            <div class="skill-name">AI & ML in Coding</div>
-            <div class="skill-bar">
-                <div class="skill-level" style="width:80%"></div>
-            </div>
+            <div class="skill-name">AI & ML Integration</div>
+            <div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
+        </div>
+
+    </div>
+
+    <div class="glass contact">
+        <h2>Contact</h2>
+        <div style="margin-top:15px;">
+            <a href="mailto:lakshyajanan@gmail.com">📧 lakshyajanan@gmail.com</a>
+            <a href="https://instagram.com/lakshya._.tyagi" target="_blank">📸 @lakshya._.tyagi</a>
         </div>
     </div>
 
-    <div class="socials">
-        <a href="mailto:lakshyajanan@gmail.com">Email</a>
-        <a href="https://instagram.com/lakshya._.tyagi" target="_blank">Instagram</a>
-    </div>
 </div>
 
+<footer>
+    ⚡ Designed by Lakshya | Kirmada
+</footer>
+
 <script>
+
+/* Cursor Glow */
+const cursor = document.querySelector('.cursor');
+document.addEventListener('mousemove', e=>{
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+/* Typing Animation */
 const text = [
-    "Hobist — Good in everything, Master of none.",
-    "2D Animator & Video Editor.",
-    "Graphic Designer.",
-    "Using AI & ML in coding and design."
+"Hobist — Good in everything.",
+"2D Animator & Video Editor.",
+"Graphic Designer.",
+"AI & ML Creator."
 ];
 
-let count = 0;
-let index = 0;
-let currentText = "";
-let letter = "";
+let count=0;
+let index=0;
+let currentText="";
+let letter="";
 
 (function type(){
-    if(count === text.length){
-        count = 0;
-    }
-    currentText = text[count];
-    letter = currentText.slice(0, ++index);
-    
-    document.getElementById("typing").textContent = letter;
-    if(letter.length === currentText.length){
-        count++;
-        index = 0;
-        setTimeout(type, 1000);
-    } else {
-        setTimeout(type, 50);
-    }
+if(count===text.length){count=0;}
+currentText=text[count];
+letter=currentText.slice(0,++index);
+
+document.getElementById("typing").textContent=letter;
+
+if(letter.length===currentText.length){
+count++;
+index=0;
+setTimeout(type,1000);
+}else{
+setTimeout(type,50);
+}
 })();
+
 </script>
 
 </body>
